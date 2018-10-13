@@ -42,7 +42,7 @@ const store = new Vuex.Store({
 				}
 			},
 			getters: {
-				display1() {
+				display1(state) {
 					return `n: ${state.n}`
 				}
 			}
@@ -57,7 +57,7 @@ const store = new Vuex.Store({
 				}
 			},
 			getters: {
-				display2() {
+				display2(state) {
 					return `n: ${state.n}`
 				}
 			}
@@ -110,9 +110,10 @@ const App = {
 }
 
 window.store = store;
+window.Vue = Vue
 
-//new Vue({
-//  el: '#app',
-//	render: h => h(App),
-//	store
-//})
+new Vue({
+ el: '#app',
+	render: h => h(App),
+	store
+})
