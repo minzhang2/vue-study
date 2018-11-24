@@ -8,7 +8,11 @@ import App from './App'
 //import './study/v-model';
 //import './study/directive';
 //import './study/route';
-import './study/vuex';
+// import './study/vuex';
+// import './study/initState';
+// import './study/asyncComponent';
+import './study/directive';
+
 
 Vue.config.productionTip = false
 

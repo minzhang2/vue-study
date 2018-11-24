@@ -3,6 +3,50 @@ import Vuex, { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
 
 Vue.use(Vuex);
 
+Vue.directive('focus', {
+	bind() {
+	},
+    inserted(el) {
+        el.focus();
+	},
+	update() {
+		debugger
+	},
+	componentUpdated() {
+		debugger
+	},
+	unbind() {
+		debugger
+	}
+})
+
+Vue.directive('longTap', {
+	bind(el, binding) {
+		const event = document.createEvent('HTMLEvents');
+		event.initEvent('longTap', true, true);
+	
+		let timeout;
+		el.addEventListener('mousedown', function() {
+			timeout = setTimeout(() => {
+				el.dispatchEvent(event);
+			}, 300);
+		}, false);
+		el.addEventListener('mouseup', function() {
+			clearTimeout(timeout);
+		}, false);
+		el.addEventListener('longTap', function(ev) {
+			if(binding.expression) {
+				binding.value(ev);
+			}
+		}, false);
+	},
+	unbind() {
+		el.removeEventListener('longTap', function() {
+			debugger
+		}, false);
+	}
+});
+
 const store = new Vuex.Store({
 	state: {
 		n: 0
@@ -72,15 +116,17 @@ const App = {
 		}
 	},
 	template: `<div>
-							<button @click="add(num)">num+n</button></br>
-							<button @click="sum">num++</button></br>
-							<button @click="addAndSum">num+n</button></br>
-							<button @click="getAsyncData">getAsyncData</button></br>
-							<button @click="getAsyncData1">getAsyncData1</button></br>
-							<p>n:{{n}}</p>
-							<p>num:{{num}}</p>
-							<p>display:{{display}}</p>
-						</div>`,
+					<input v-focus />
+					<button @click="add(num)">num+n</button></br>
+					<button @click="sum">num++</button></br>
+					<button @click="addAndSum">num+n</button></br>
+					<button @click="getAsyncData">getAsyncData</button></br>
+					<button @click="getAsyncData1">getAsyncData1</button></br>
+					<p>n:{{n}}</p>
+					<p>num:{{num}}</p>
+					<p>display:{{display}}</p>
+					<p v-longTap="long">22222222</p>
+				</div>`,
 	computed: {
 		...mapState([
 			'n'
@@ -105,6 +151,9 @@ const App = {
 		},
 		getAsyncData1() {
 			this.$store.dispatch('getAsyncData')
+		},
+		long() {
+			debugger
 		}
 	}
 }
@@ -116,4 +165,8 @@ new Vue({
  el: '#app',
 	render: h => h(App),
 	store
+})
+
+Vue.nextTick(function() {
+	console.log('nextTick run')
 })
