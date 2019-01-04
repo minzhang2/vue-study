@@ -9,6 +9,7 @@
   		<li>2</li>
   	</ul>
   	<button @click="toggle">toggle</button>
+    <img src="./assets/logo.png" alt="">
   </div>
 </template>
 

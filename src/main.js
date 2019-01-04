@@ -1,20 +1,25 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
+// import App from './App'
 //import router from './router'
 //import './study/event';
 //import './study/compiler';
 //import './study/v-model';
 //import './study/directive';
-//import './study/route';
+import './study/route';
 // import './study/vuex';
 // import './study/initState';
 // import './study/asyncComponent';
-import './study/directive';
+// import './study/directive';
 
 
 Vue.config.productionTip = false
+
+// new Vue({
+//   el: '#app',
+//   render: h => h(App)
+// });
 
 //Vue.component('LoadingComponent', {
 //	template: '<div>loading</div>'
@@ -46,25 +51,33 @@ Vue.config.productionTip = false
 //    })
 //	}, 1000)
 //})
+// Vue.component('App', {
+//   props: {
+//     message: String
+//   },
+//   template: '<div>{{message}}</div>'
+// });
 
-/* eslint-disable no-new */
-//new Vue({
-//  el: '#app',
-//	data: {
-//		id: 'aaa',
-//		message: 'init data',
-//		list: [1,2,3,4,5],
-//		show: true
-//	},
-////  router,
-////  components: { App },
-////	render: h => h(App)
-//  template: '<div :id=id data-id="222" @click="handler"><span v-if="show">{{message}}</span><span v-for="(item, index) in list">{{item}}:<{{index}}</span></div>',
-//	methods: {
-//		handler() {
-//			this.message = 'hello world'
-//		}
-//	}
-//})
-
-
+// window.Vue = Vue
+// /* eslint-disable no-new */
+// window.vm1 = new Vue({
+//   el: '#app',
+//   data: {
+//     info: {
+//       name: 'jay'
+//     },
+//     id: 'aaa',
+//     message: 'init data',
+//     list: [1, 2, 3, 4, 5],
+//     show: true
+//   },
+//   //  router,
+//   //  components: { App },
+//   //	render: h => h(App)
+//   template: '<div id="id" :data-id="info.name" @click="handler"><span v-if="show">{{message}}</span><App :message="id" /><span v-for="(item, index) in list">{{item}}:<{{index}}</span></div>',
+//   methods: {
+//     handler() {
+//       this.message = 'hello world'
+//     }
+//   }
+// })
